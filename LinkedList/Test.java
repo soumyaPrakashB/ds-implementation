@@ -28,5 +28,20 @@ public class Test {
         System.out.println(list.get(5));
         System.out.println(list.get(1));
         System.out.println(list.get());
+        System.out.println(list.contains(5));
+        System.out.println(list.contains(50));
+
+        list.display();
+        System.out.println(list.remove(0));
+        list.display();
+
+        System.out.println(list.remove(5));
+        list.display();
+
+        System.out.println(list.remove(2));
+        list.display();
+
+
+
     }
 }

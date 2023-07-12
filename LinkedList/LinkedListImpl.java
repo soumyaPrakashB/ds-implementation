@@ -76,22 +76,74 @@ public class LinkedListImpl implements LinkedList{
 
     @Override
     public boolean contains(int a) {
+
+        Node temp = head.next;
+
+        while(temp != null) {
+            if(temp.val == a) {
+                return true;
+            }
+
+            temp = temp.next;
+        }
+
         return false;
     }
 
     @Override
     public int removeFirst() {
-        return 0;
+        Node temp = head.next;
+
+        head.next = temp.next;
+
+        return temp.val;
     }
 
     @Override
     public int removeLast() {
+        Node temp = head.next;
+        int lastVal;
+
+        while(temp != null) {
+            if(temp.next.next == null) {
+                lastVal = temp.next.val;
+                temp.next = null;
+                return lastVal;
+            }
+
+            temp = temp.next;
+        }
+
         return 0;
     }
 
     @Override
     public int remove(int i) {
-        return 0;
+
+        int removedVal = 0;
+
+        if(i == 0) {
+            return removeFirst();
+        }
+
+        int index = 0;
+        Node temp = head.next;
+
+        while(temp != null) {
+            if(temp.next == null) {
+                return removeLast();
+            }
+            else if(i == index + 1) {
+                removedVal = temp.next.val;
+                temp.next = temp.next.next;
+                break;
+            }
+
+            index++;
+            temp = temp.next;
+        }
+
+        return removedVal;
     }
 
     @Override
